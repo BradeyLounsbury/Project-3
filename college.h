@@ -30,7 +30,7 @@ class College {
     void display(ostream& outs);
     void load(istream& fin);
     void save(ostream& fout);
-    // double hours();
+    double hours() const;
 
     private:
     string name;

@@ -198,3 +198,19 @@ void College::save(ostream& fout) {
         cursor = cursor->link();
     }
 }
+
+double College::hours() const {
+    if (head == NULL)
+    {
+        return 0;
+    }
+    
+    node* cursor = head;
+    double hours = 0;
+    while (cursor != NULL)
+    {
+        hours += cursor->data().get_hours();
+        cursor = cursor->link();
+    }
+    return hours;
+}
