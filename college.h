@@ -1,4 +1,11 @@
-//header file for college class
+/**
+ *      Name: Bradey Lounsbury
+ *      Date: February 28, 2020
+ *      Desc: Container class that stores course objects in a linked list.
+ *      Has funcs to add and remove courses as well as funcs to display, 
+ *      load (from a file), and save (to a file), the list.  It also has 
+ *      funcs to calculate hours taken and gpa of the list.
+ */
 
 #include <iostream>
 #include "node.h"

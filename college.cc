@@ -1,4 +1,8 @@
-//Implementation of college.h file
+/**
+ *      Name: Bradey Lounsbury
+ *      Date: February 28, 2020
+ *      Desc: Implementation of college.h file
+ */
 #include "college.h"
 #include "node.h"
 using namespace std;
