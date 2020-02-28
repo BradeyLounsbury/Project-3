@@ -30,7 +30,7 @@ int main(){
     string coursename;
     ifstream fin;
     ofstream fout;
-    string username,filename, fullname;
+    string username,filename, fullname, outfile;
 
         cout<<"Welcome to Your College Course Management.\n\n";
         cout<<"Begin by entering your username: ";
@@ -73,10 +73,10 @@ int main(){
 		mycollege.remove(coursename);
 		break;
 	    case 4:
-		cout<<"Total hours = "<<mycollege.hours();
+		cout<<"Total hours = "<<mycollege.hours() << endl;
 		break;
 	    case 5:
-		cout<<"Your current GPA = "<<mycollege.gpa();
+		cout<<"Your current GPA = "<<mycollege.gpa() << endl;
 		break;
 	    case 6:{
 		College acopy(mycollege);
@@ -84,9 +84,9 @@ int main(){
 		cin>>coursename;
 	        acopy.remove(coursename);
 		cout<<"This would make your GPA:"<<acopy.gpa();
-   		cout<<"And your courselist would look like.";
+   		cout<<"\nAnd your courselist would look like.\n";
 		acopy.display(cout);
-		cout<<"But your GPA is still really: "<<mycollege.gpa();
+		cout<<"But your GPA is still really: "<<mycollege.gpa()<<endl;
 		break;
 		} // the copy goes out of scope here - destructor runs
 	    case 0:
