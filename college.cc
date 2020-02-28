@@ -117,6 +117,38 @@ void College::add(course& c) {
     }
 }
 
+void College::remove(string coursename) {
+    if (head == NULL)
+    {
+        cout << "No courses taken :(";
+        return;
+    }
+    
+    node* tmp = head;
+    node* cursor = head;
+    //removes first course
+    if (head->data().get_course_number() == coursename)
+    {
+        head = head->link();
+        delete tmp;
+        return;
+    }
+
+    cursor = head->link();
+    while (cursor != NULL)
+    {
+        if (cursor->data().get_course_number() == coursename)
+        {
+            tmp->set_link(cursor->link());
+            delete cursor;
+            return;
+        }
+        tmp = cursor;
+        cursor = cursor->link();
+    }
+    cout << "Course not found" << endl;
+}
+
 
 //helpers
 void College::display(ostream& outs) {

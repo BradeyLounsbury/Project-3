@@ -24,12 +24,13 @@ class College {
 
     //mutators
     void add(course& c);
-
+    void remove(string coursename);
 
     //helpers
     void display(ostream& outs);
     void load(istream& fin);
     void save(ostream& fout);
+    // double hours();
 
     private:
     string name;
