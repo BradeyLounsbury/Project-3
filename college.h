@@ -31,6 +31,7 @@ class College {
     void load(istream& fin);
     void save(ostream& fout);
     double hours() const;
+    double gpa() const;
 
     private:
     string name;

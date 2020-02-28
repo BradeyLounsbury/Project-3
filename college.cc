@@ -11,7 +11,7 @@ College::~College() {
         rmptr = head;
         head = head->link();
         delete rmptr;
-        cout << "Erased" << endl;
+        // cout << "Erased" << endl;
     }
 }
 
@@ -124,29 +124,43 @@ void College::remove(string coursename) {
         return;
     }
     
+    for (size_t i = 0; i < coursename.length(); i++)
+    {
+        coursename[i] = toupper(coursename[i]);
+    }
+    
     node* tmp = head;
-    node* cursor = head;
-    //removes first course
-    if (head->data().get_course_number() == coursename)
+    //removes first course(s)
+    while(head->data().get_course_number() == coursename)
     {
         head = head->link();
         delete tmp;
-        return;
+        tmp = head;
     }
 
-    cursor = head->link();
+    bool deleted = false;
+    node* cursor = head->link();
+    tmp = head;
     while (cursor != NULL)
     {
         if (cursor->data().get_course_number() == coursename)
         {
             tmp->set_link(cursor->link());
             delete cursor;
-            return;
+            cursor = tmp->link();
+            deleted = true;
         }
-        tmp = cursor;
-        cursor = cursor->link();
+        else
+        {
+            tmp = cursor;
+            cursor = cursor->link();
+        }
     }
-    cout << "Course not found" << endl;
+    if (!deleted)
+    {
+        cout << "Course not found" << endl;
+    }
+    return;
 }
 
 
@@ -202,6 +216,7 @@ void College::save(ostream& fout) {
 double College::hours() const {
     if (head == NULL)
     {
+        cout << "No courses taken :(" << endl;
         return 0;
     }
     
@@ -213,4 +228,23 @@ double College::hours() const {
         cursor = cursor->link();
     }
     return hours;
+}
+
+double College::gpa() const {
+    if (head == NULL)
+    {
+        cout << "No courses taken :(" << endl;
+        return 0;
+    }
+    
+    node* cursor = head;
+    double gpa = 0;
+    double course_hours = 0;
+    while (cursor != NULL)
+    {
+        gpa += (cursor->data().get_number_grade() * cursor->data().get_hours());
+        course_hours += cursor->data().get_hours();
+        cursor = cursor->link();
+    }
+    return gpa/course_hours;
 }
