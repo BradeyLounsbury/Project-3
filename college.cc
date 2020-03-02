@@ -90,7 +90,7 @@ void College::set_name(string new_name) {
 void College::add(course& c) {
     if (head == NULL)
     {
-        head->set_link(new node(c));
+        head = new node(c, head);
     }
     else
     {
